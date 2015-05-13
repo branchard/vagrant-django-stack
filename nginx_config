@@ -1,0 +1,25 @@
+server {
+    listen      80;
+    server_name example.com;
+    charset     utf-8;
+
+    access_log /var/log/nginx/django_0.access.log;
+    error_log /var/log/nginx/django_0.error.log;
+
+    location /media  {
+        autoindex on;
+        alias /vagrant/media;
+    }
+
+    location /static {
+        autoindex on;
+        alias /vagrant/static;
+    }
+
+    location / {
+        include fastcgi_params;
+        proxy_set_header X-Forwarded-Host $server_name;
+        proxy_set_header X-Real-IP $remote_addr;
+        fastcgi_pass 127.0.0.1:8000;
+    }
+}
