@@ -52,8 +52,11 @@ Vagrant.configure(2) do |config|
   config.vm.network "private_network", ip: ip_address
   config.vm.hostname = project_name + ".dev"
 
+  # to allow this projet to be a submodule of an existing django project
+  config.vm.synced_folder "../", "/vagrant/"
+
   # To remove 'stdin: is not a tty' error
   config.ssh.shell = "bash -c 'BASH_ENV=/etc/profile exec bash'"
 
-  config.vm.provision :shell, :path => "bootstrap.sh", :args => project_name + " " + database_password + " " + python_version + " " + django_version
+  config.vm.provision :shell, :path => "bootstrap.sh", :args => project_name + " " + database_password + " " + python_version + " " + django_version + " " + File.basename(Dir.getwd)
 end

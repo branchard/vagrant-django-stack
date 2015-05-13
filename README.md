@@ -1,5 +1,13 @@
-# vagrant-django-stack
-A simple and configurable Vagrant stack for Django 1.7 or 1.8, with Python 2 or 3, a virtualenv activated by default, MySQL and Nginx-Gunicorn.
+# Vagrant Django stack
+Vagrant Django stack is easy to install, simple and configurable.
+Included:
+* Django 1.7 to 1.8
+* Python 2.7 to 3.4
+* Virtualenv
+* Virtualenvwrapper
+* MySQL
+* Nginx
+*Gunicorn
 
 ## Requirements
 * [VirtualBox](https://www.virtualbox.org)
