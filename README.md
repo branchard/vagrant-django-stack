@@ -1,7 +1,7 @@
 # Vagrant Django stack
 Vagrant Django stack is easy to install, simple and configurable.
 Included:
-* Django 1.7 to 1.8
+* Django 1.7.x to 1.8.x
 * Python 2.7 to 3.4
 * Virtualenv
 * Virtualenvwrapper
