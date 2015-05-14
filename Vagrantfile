@@ -22,7 +22,8 @@ python_version = "3"
 # Django version
 django_version = "1.8.1"
 
-
+# Vagrant init
+##############################
 
 Vagrant.configure(2) do |config|
 
@@ -42,7 +43,7 @@ Vagrant.configure(2) do |config|
   if python_version == nil || (python_version.to_f < 2.4 && python_version.to_f > 3.4)
     python_version = "2.7"
   end
-  if django_version == nil # test if django version id between 1.7 and 1.8
+  if django_version == nil
     django_version = "1.8"
   end
 
