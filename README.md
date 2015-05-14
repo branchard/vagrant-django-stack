@@ -7,7 +7,7 @@ Included:
 * Virtualenvwrapper
 * MySQL
 * Nginx
-*Gunicorn
+* Gunicorn
 
 ## Requirements
 * [VirtualBox](https://www.virtualbox.org) (>=3.4)
