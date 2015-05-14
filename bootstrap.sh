@@ -77,7 +77,7 @@ echo 'Done.'
 echo 'Gunicorn will be installed and run'
 pip install gunicorn
 touch $HOME_DIR/gunicorn_run.sh
-tr -d '\015' $ROOT_DIR/gunicorn_run.sh > $HOME_DIR/gunicorn_run.sh # convert dos line ending file to unix ending file
+tr -d '\015' < $ROOT_DIR/gunicorn_run.sh > $HOME_DIR/gunicorn_run.sh # convert dos line ending file to unix ending file
 chmod a+x $HOME_DIR/gunicorn_run.sh
 $HOME_DIR/gunicorn_run.sh&
 echo 'Done.'
