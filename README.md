@@ -10,8 +10,8 @@ Included:
 *Gunicorn
 
 ## Requirements
-* [VirtualBox](https://www.virtualbox.org)
-* [Vagrant](http://vagrantup.com)
+* [VirtualBox](https://www.virtualbox.org) (>=3.4)
+* [Vagrant](http://vagrantup.com) (>=1.7)
 
 ## Get started
 Clone this repository
