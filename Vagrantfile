@@ -53,6 +53,10 @@ Vagrant.configure(2) do |config|
   config.vm.network "private_network", ip: ip_address
   config.vm.hostname = project_name + ".dev"
 
+  # allow ports
+  config.vm.network "forwarded_port", guest: "8000", host: "8000"
+  config.vm.network "forwarded_port", guest: "80", host: "80"
+
   # to allow this projet to be a submodule of an existing django project
   config.vm.synced_folder "../", "/vagrant/"
 
