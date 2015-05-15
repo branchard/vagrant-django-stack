@@ -76,10 +76,10 @@ echo 'Done.'
 # Gunicorn
 echo 'Gunicorn will be installed and run'
 pip install gunicorn
-touch $HOME_DIR/gunicorn_run.sh
-tr -d '\015' < $ROOT_DIR/gunicorn_run.sh > $HOME_DIR/gunicorn_run.sh # convert dos line ending file to unix ending file
-chmod a+x $HOME_DIR/gunicorn_run.sh
-$HOME_DIR/gunicorn_run.sh&
+touch /etc/init.d/gunicorn.sh
+tr -d '\015' < $ROOT_DIR/gunicorn_run.sh > /etc/init.d/gunicorn.sh # convert dos line ending file to unix ending file
+chmod a+x /etc/init.d/gunicorn.sh
+/etc/init.d/gunicorn.sh&
 echo 'Done.'
 
 # Nginx
