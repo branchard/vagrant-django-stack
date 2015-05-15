@@ -50,12 +50,12 @@ Vagrant.configure(2) do |config|
   config.vm.box = "precise" + vm_architecture
   config.vm.box_url = "http://files.vagrantup.com/precise" + vm_architecture + ".box"
 
-  config.vm.network "private_network", ip: ip_address
+  config.vm.network "public_network", ip: ip_address
   config.vm.hostname = project_name + ".dev"
 
   # allow ports
-  config.vm.network "forwarded_port", guest: "8000", host: "8000"
-  config.vm.network "forwarded_port", guest: "80", host: "80"
+  config.vm.network "forwarded_port", guest: "8000", host: "8000", auto_correct: true
+  config.vm.network "forwarded_port", guest: "80", host: "80", auto_correct: true
 
   # to allow this projet to be a submodule of an existing django project
   config.vm.synced_folder "../", "/vagrant/"
