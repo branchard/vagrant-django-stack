@@ -5,7 +5,7 @@ set -e
 LOGFILE=/var/log/gunicorn/mlorant.log
 LOGDIR=$(dirname $LOGFILE)
 LOGLEVEL=debug   # debug, info or warning
-NUM_CORES=sudo cat /proc/cpuinfo | grep processor | wc -l
+NUM_CORES=nproc
 let "NUM_WORKERS=2*$NUM_CORES+1"
 
 # user/group to run as
