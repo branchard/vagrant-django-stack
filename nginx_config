@@ -20,6 +20,6 @@ server {
         include fastcgi_params;
         proxy_set_header X-Forwarded-Host $server_name;
         proxy_set_header X-Real-IP $remote_addr;
-        fastcgi_pass 127.0.0.1:8000;
+        fastcgi_pass 127.0.0.1:8080;
     }
 }

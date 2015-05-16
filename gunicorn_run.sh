@@ -1,5 +1,5 @@
 #!/bin/bash
-PORT=8000
+PORT=8080
 
 set -e
 LOGFILE=/var/log/gunicorn/mlorant.log
