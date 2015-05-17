@@ -63,5 +63,7 @@ Vagrant.configure(2) do |config|
   # To remove 'stdin: is not a tty' error
   config.ssh.shell = "bash -c 'BASH_ENV=/etc/profile exec bash'"
 
-  config.vm.provision :shell, :path => "bootstrap.sh", :args => project_name + " " + database_password + " " + python_version + " " + django_version + " " + File.basename(Dir.getwd)
+  config.vm.provision :shell, :path => "bootstrap.sh",\
+    :args => project_name + " " + database_password + " " + \
+    python_version + " " + django_version + " " + File.basename(Dir.getwd)
 end
