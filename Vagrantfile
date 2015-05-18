@@ -65,5 +65,5 @@ Vagrant.configure(2) do |config|
 
   config.vm.provision :shell, :path => "bootstrap.sh",\
     :args => project_name + " " + database_password + " " + \
-    python_version + " " + django_version + " " + File.basename(Dir.getwd)
+    python_version + " " + django_version
 end

@@ -15,11 +15,11 @@ PYTHON_VERSION=$3
 DJANGO_VERSION=$4
 VIRTUALENV_NAME='venv'
 HOME_DIR='/home/vagrant/'
-PROJECT_DIR="/vagrant/"
-ROOT_DIR="$PROJECT_DIR/$5/"
+PROJECTS_DIR="/vagrant/projects/"
+ROOT_DIR="/vagrant/"
 echo "CONFIGURATION: PROJECT_NAME=$PROJECT_NAME, MYSQL_PASSWORD=$MYSQL_PASSWORD,\
   PYTHON_VERSION=$PYTHON_VERSION, DJANGO_VERSION=$DJANGO_VERSION,\
-  VIRTUALENV_NAME=$VIRTUALENV_NAME, HOME_DIR=$HOME_DIR, ROOT_DIR=$ROOT_DIR"
+  VIRTUALENV_NAME=$VIRTUALENV_NAME, HOME_DIR=$HOME_DIR
 
 # Essentials tasks
 rm -f $HOME_DIR/postinstall.sh # remove useless stuff
@@ -52,7 +52,7 @@ echo '' >> $HOME_DIR.bashrc
 echo '# CUSTOM' >> $HOME_DIR.bashrc
 echo "export WORKON_HOME=~/.virtualenvs" >> $HOME_DIR.bashrc
 echo 'mkdir -p $WORKON_HOME' >> $HOME_DIR.bashrc
-echo "export PROJECT_HOME=$PROJECT_DIR" >> $HOME_DIR.bashrc
+echo "export PROJECT_HOME=$PROJECTS_DIR" >> $HOME_DIR.bashrc
 echo "source /usr/local/bin/virtualenvwrapper.sh" >> $HOME_DIR.bashrc
 echo "workon $VIRTUALENV_NAME" >> $HOME_DIR.bashrc
 echo "echo 'virtualenv acivated'" >> $HOME_DIR.bashrc
@@ -60,7 +60,7 @@ echo "echo 'virtualenv acivated'" >> $HOME_DIR.bashrc
 
 export WORKON_HOME=$HOME_DIR/.virtualenvs
 mkdir -p $WORKON_HOME
-export PROJECT_HOME="$PROJECT_DIR"
+export PROJECT_HOME="$PROJECTS_DIR"
 source /usr/local/bin/virtualenvwrapper.sh
 
 echo 'done.'
