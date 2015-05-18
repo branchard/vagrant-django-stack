@@ -107,10 +107,8 @@ echo 'Supervisor will be installed and run'
 apt-get -y install supervisor
 cp $ROOT_DIR/supervisor.conf /etc/supervisor/conf.d/
 sed -i -e "s/<project_name>/$PROJECT_NAME/g" /etc/supervisor/conf.d/supervisor.conf
-next_string="$PROJECTS_DIR/virtualenvs/$PROJECT_NAME"
-sed -i -e "s:<virtualenv_loc>:$next_string:g" /etc/supervisor/conf.d/supervisor.conf
-next_string="$PROJECTS_DIR/$PROJECT_NAME"
-sed -i -e "s:<project_loc>:$next_string:g" /etc/supervisor/conf.d/supervisor.conf
+sed -i -e "s:<virtualenv_loc>:$PROJECTS_DIR/virtualenvs/$PROJECT_NAME:g" /etc/supervisor/conf.d/supervisor.conf
+sed -i -e "s:<project_loc>:$PROJECTS_DIR/$PROJECT_NAME:g" /etc/supervisor/conf.d/supervisor.conf
 sudo unlink /var/run/supervisor.sock
 service supervisor start
 supervisorctl reread
