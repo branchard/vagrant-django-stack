@@ -2,3 +2,6 @@
 .vagrant
 projects/*
 !projects/.gitkeep
+!projects/virtualenvs
+projects/virtualenvs/*
+!projects/virtualenvs/.gitkeep

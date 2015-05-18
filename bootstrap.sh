@@ -13,13 +13,13 @@ PROJECT_NAME=$1
 MYSQL_PASSWORD=$2
 PYTHON_VERSION=$3
 DJANGO_VERSION=$4
-VIRTUALENV_NAME='venv'
+VIRTUALENV_NAME=$PROJECT_NAME
 HOME_DIR='/home/vagrant/'
 PROJECTS_DIR="/vagrant/projects/"
 ROOT_DIR="/vagrant/"
 echo "CONFIGURATION: PROJECT_NAME=$PROJECT_NAME, MYSQL_PASSWORD=$MYSQL_PASSWORD,\
   PYTHON_VERSION=$PYTHON_VERSION, DJANGO_VERSION=$DJANGO_VERSION,\
-  VIRTUALENV_NAME=$VIRTUALENV_NAME, HOME_DIR=$HOME_DIR
+  VIRTUALENV_NAME=$VIRTUALENV_NAME, HOME_DIR=$HOME_DIR"
 
 # Essentials tasks
 rm -f $HOME_DIR/postinstall.sh # remove useless stuff
@@ -74,10 +74,21 @@ echo 'We are now in the virtualenv !'
 
 pip install --allow-all-external mysql-connector-python
 
-# Django
+# Django installation
 echo "Django $DJANGO_VERSION will be installed"
 pip install django==$DJANGO_VERSION
 echo 'Done.'
+
+# Django project test and init
+if [ ! -f $PROJECTS_DIR/$PROJECT_NAME/manage.py ];
+  then
+    echo "The project $PROJECT_NAME don\'t exist, a new project will be init"
+    (cd $PROJECTS_DIR && django-admin startproject $PROJECT_NAME)
+    echo 'Done.'
+  else
+    echo "The project $PROJECT_NAME exist"
+    echo 'Done.'
+fi
 
 # Gunicorn
 echo 'Gunicorn will be installed'

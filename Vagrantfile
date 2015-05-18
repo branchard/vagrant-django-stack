@@ -7,7 +7,9 @@
 # IP adress for the host only network
 ip_address = "127.168.10.14"
 
-# Project name for Django project and hostname
+# Set the name of your project directory which is in projects/,
+# if doesn't exist a new Django project will be created with the project name.
+# The project name serves to database name and for virtualenv name
 project_name = "myproject"
 
 # Chose 32 or 64 for the vm architecture
@@ -58,7 +60,7 @@ Vagrant.configure(2) do |config|
   config.vm.network "forwarded_port", guest: "80", host: "80", auto_correct: true # need privilege
 
   # to allow this projet to be a submodule of an existing django project
-  config.vm.synced_folder "../", "/vagrant/"
+  config.vm.synced_folder "./", "/vagrant/"
 
   # To remove 'stdin: is not a tty' error
   config.ssh.shell = "bash -c 'BASH_ENV=/etc/profile exec bash'"
