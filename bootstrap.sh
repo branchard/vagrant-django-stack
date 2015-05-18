@@ -76,12 +76,20 @@ pip install django==$DJANGO_VERSION
 echo 'Done.'
 
 # Gunicorn
-echo 'Gunicorn will be installed and run'
+echo 'Gunicorn will be installed'
 pip install gunicorn
-touch /etc/init.d/gunicorn.sh
-tr -d '\015' < $ROOT_DIR/gunicorn_run.sh > /etc/init.d/gunicorn.sh # convert dos line ending file to unix ending file
-chmod a+x /etc/init.d/gunicorn.sh
-/etc/init.d/gunicorn.sh&
+echo 'Done.'
+
+# Supervisor
+echo 'Supervisor will be installed and run'
+apt-get -y install supervisor
+cp $ROOT_DIR/supervisor.conf /etc/supervisor/conf.d/
+sed -i -e "s/<virtualenv_name>/$VIRTUALENV_NAME/g" /etc/supervisor/conf.d/supervisor.conf
+sed -i -e "s/<project_name>/$PROJECT_NAME/g" /etc/supervisor/conf.d/supervisor.conf
+sudo unlink /var/run/supervisor.sock
+service supervisor start
+supervisorctl reread
+supervisorctl reload
 echo 'Done.'
 
 # Nginx
@@ -89,9 +97,16 @@ echo 'Nginx will be installed, configured and run'
 apt-get -y install nginx
 rm -f /etc/nginx/sites-enabled/default
 rm -f /etc/nginx/sites-available/default
-cp $ROOT_DIR/nginx_config /etc/nginx/sites-available/
-mv /etc/nginx/sites-available/nginx_config /etc/nginx/sites-available/$PROJECT_NAME
-sed -i -e "s/example.com/$PROJECT_NAME/g" /etc/nginx/sites-available/$PROJECT_NAME
+
+echo 'server {' > /etc/nginx/sites-available/default
+echo '        listen 80 default_server;' > /etc/nginx/sites-available/default
+echo '        return 444;' > /etc/nginx/sites-available/default
+echo '}' > /etc/nginx/sites-available/default
+
+cp $ROOT_DIR/nginx.conf /etc/nginx/sites-available/
+mv /etc/nginx/sites-available/nginx.conf /etc/nginx/sites-available/$PROJECT_NAME
+sed -i -e "s/<server_name>/$PROJECT_NAME.dev/g" /etc/nginx/sites-available/$PROJECT_NAME
+sed -i -e "s/<project_name>/$PROJECT_NAME/g" /etc/nginx/sites-available/$PROJECT_NAME
 ln -s /etc/nginx/sites-available/$PROJECT_NAME /etc/nginx/sites-enabled/$PROJECT_NAME
 service nginx restart
 echo 'Done.'
@@ -104,6 +119,7 @@ echo 'Done.'
 # Tests
 echo 'Testing if corectly installed and configured ...'
 # TODO
+# if python -c "import django; print(django.get_version())" == DJANGO_VERSION
 echo 'Done.'
 
 echo 'Boostrap done !'
