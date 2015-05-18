@@ -6,6 +6,7 @@
 # - Test Django versions compatibility
 # - Correct 'dpkg-preconfigure: unable to re-open stdin: No such file or directory' err msg
 # - Correct '[Warning] Using unique option prefix key_buffer instead of key_buffer_size is deprecated and will be removed in a future release. Please use the full name instead.' wrn msg
+# - Allow to running multiple applications
 
 echo 'bootstrap.sh is run !'
 # Configuration
@@ -109,7 +110,7 @@ cp $ROOT_DIR/supervisor.conf /etc/supervisor/conf.d/
 sed -i -e "s/<project_name>/$PROJECT_NAME/g" /etc/supervisor/conf.d/supervisor.conf
 sed -i -e "s:<virtualenv_loc>:$PROJECTS_DIR/virtualenvs/$PROJECT_NAME:g" /etc/supervisor/conf.d/supervisor.conf
 sed -i -e "s:<project_loc>:$PROJECTS_DIR/$PROJECT_NAME:g" /etc/supervisor/conf.d/supervisor.conf
-sudo unlink /var/run/supervisor.sock
+unlink /var/run/supervisor.sock
 service supervisor start
 supervisorctl reread
 supervisorctl reload
