@@ -70,6 +70,10 @@ mkvirtualenv --python=/usr/bin/python$PYTHON_VERSION $VIRTUALENV_NAME
 echo 'Virtualenv activating now'
 echo 'We are now in the virtualenv !'
 
+# Python dependences
+
+pip install --allow-all-external mysql-connector-python
+
 # Django
 echo "Django $DJANGO_VERSION will be installed"
 pip install django==$DJANGO_VERSION
