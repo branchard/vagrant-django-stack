@@ -8,7 +8,7 @@
 ip_address = "127.168.10.14"
 
 # Project name for Django project and hostname
-project_name = "default"
+project_name = "myproject"
 
 # Chose 32 or 64 for the vm architecture
 vm_architecture = "32"
@@ -55,7 +55,7 @@ Vagrant.configure(2) do |config|
 
   # allow ports
   config.vm.network "forwarded_port", guest: "8000", host: "8000", auto_correct: true
-  config.vm.network "forwarded_port", guest: "80", host: "80", auto_correct: true
+  config.vm.network "forwarded_port", guest: "80", host: "80", auto_correct: true # need privilege
 
   # to allow this projet to be a submodule of an existing django project
   config.vm.synced_folder "../", "/vagrant/"
