@@ -73,6 +73,7 @@ echo 'Virtualenv activating now'
 
 # Python dependencies
 pip install git+git://github.com/davispuh/MySQL-for-Python-3
+pip install setproctitle
 
 # Django installation
 echo "Django $DJANGO_VERSION will be installed"
@@ -101,6 +102,10 @@ fi
 # Gunicorn
 echo 'Gunicorn will be installed'
 pip install gunicorn
+
+cp $ROOT_DIR/gunicorn_start.sh /bin/
+mv /bin/gunicorn_start.sh /bin/gunicorn_start
+sed -i -e 's/\r$//' /bin/gunicorn_start # DOS carriage return characters substitution
 echo 'Done.'
 
 # Supervisor
