@@ -9,6 +9,7 @@ Included:
 * Nginx
 * Gunicorn
 * Supervisor
+
 ![Vagrant Django Stack](http://image.noelshack.com/fichiers/2015/21/1432026158-wsgi-nginx-gunicorn-supervisor.png)
 
 ## Requirements
