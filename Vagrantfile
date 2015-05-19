@@ -1,28 +1,37 @@
 # -*- mode: ruby -*-
 # vi: set ft=ruby :
 
-# General project settings
+# General project settings parsing from conf.yml
 ##############################
+require 'yaml'
 
-# IP adress for the host only network
-ip_address = "127.168.10.14"
+puts "conf.yml parsing ..."
 
-# Set the name of your project directory which is in projects/,
-# if doesn't exist a new Django project will be created with the project name.
-# The project name serves to database name and for virtualenv name
-project_name = "myproject"
+conf_file = begin
+  YAML.load_file('conf.yml')
+  rescue
+  puts "No such file conf.yml, you must create it by copying conf.example.yml"
+  exit
+end
 
-# Chose 32 or 64 for the vm architecture
-vm_architecture = "32"
+project_name = conf_file["project_name"].to_s
 
-# MySQL password
-database_password = "root"
+python_version = conf_file["python_version"].to_s
 
-# Python version (3 is recomended)
-python_version = "3"
+django_version = conf_file["django_version"].to_s
 
-# Django version
-django_version = "1.8.1"
+vm_architecture = conf_file["vm_architecture"].to_s
+
+ip_address = conf_file["ip_address"].to_s
+
+database_password = conf_file["database_password"].to_s
+
+puts "Configuration: project_name: " + project_name + ", python_version: " + \
+python_version + ", django_version: " + django_version + \
+", vm_architecture: " + vm_architecture + ", ip_address: " + ip_address + \
+", database_password: " + database_password
+
+puts "Done."
 
 # Vagrant init
 ##############################

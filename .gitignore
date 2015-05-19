@@ -5,3 +5,4 @@ projects/*
 !projects/virtualenvs
 projects/virtualenvs/*
 !projects/virtualenvs/.gitkeep
+conf.yml
