@@ -36,6 +36,7 @@ export PYTHONPATH=$DJANGODIR:$PYTHONPATH
 # Start your Django Unicorn
 # Programs meant to be run under supervisor should not daemonize themselves (do not use --daemon)
 exec $ROOT_DIR/projects/virtualenvs/$NAME/bin/gunicorn ${DJANGO_WSGI_MODULE}:application \
+  --bind 127.0.0.1:8001 \
   --name $NAME \
   --workers $NUM_WORKERS \
   --user=$USER --group=$GROUP \
