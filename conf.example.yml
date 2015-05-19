@@ -1,0 +1,23 @@
+##############################
+# Copy this file with 'conf.yml' name and configure your settings
+##############################
+
+# Set the name of your project directory which is in projects/,
+# if doesn't exist a new Django project will be created with the project name.
+# The project name serves to database name and for virtualenv name
+project_name: myproject
+
+# Python version (3 is recomended)
+python_version: 3
+
+# Django version
+django_version: 1.8.1
+
+# Chose 32 or 64 for the vm architecture
+vm_architecture: 32
+
+# IP adress for the host only network
+ip_address: 127.168.10.14
+
+# MySQL password
+database_password: root

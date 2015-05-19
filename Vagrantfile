@@ -15,7 +15,7 @@ conf_file = begin
 end
 
 # TODO more tests
-project_name = conf_file["project_nme"] || "default"
+project_name = conf_file["project_name"] || "myproject"
 
 python_version = conf_file["python_version"] || "2.7"
 
