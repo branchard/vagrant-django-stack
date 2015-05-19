@@ -73,7 +73,7 @@ mkvirtualenv --python=/usr/bin/python$PYTHON_VERSION $VIRTUALENV_NAME
 echo 'Virtualenv activating now'
 
 # Python dependencies
-pip install git+git://github.com/davispuh/MySQL-for-Python-3
+pip install --allow-all-external mysql-connector-python
 pip install setproctitle
 
 # Django installation
