@@ -56,6 +56,7 @@ Vagrant.configure(2) do |config|
   config.vm.hostname = project_name + ".dev"
 
   # allow ports
+  config.vm.network "forwarded_port", guest: "8000", host: "8000", auto_correct: true
   config.vm.network "forwarded_port", guest: "80", host: "80", auto_correct: true # need privilege
 
   # to allow this projet to be a submodule of an existing django project
