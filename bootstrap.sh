@@ -34,13 +34,14 @@ echo 'Some essential packages will be installed'
 apt-get -y install bc git-core build-essential
 echo 'Done.'
 
-# MySQL
+# MySQL & create database
 echo 'MySQL will be installed and configured'
 debconf-set-selections <<< "mysql-server-5.5 mysql-server/root_password password $MYSQL_PASSWORD"
 debconf-set-selections <<< "mysql-server-5.5 mysql-server/root_password_again password $MYSQL_PASSWORD"
 apt-get -y install mysql-server
 apt-get -y install mysql-client
 apt-get -y install libmysqlclient-dev
+echo "CREATE DATABASE IF NOT EXISTS $PROJECT_NAME;" | mysql --host=localhost --user=root --password=root
 echo 'Done.'
 
 # Python + virtualenv
