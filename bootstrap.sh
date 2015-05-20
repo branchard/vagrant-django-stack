@@ -81,6 +81,12 @@ echo "Django $DJANGO_VERSION will be installed"
 pip install django==$DJANGO_VERSION
 echo 'Done.'
 
+# Django correction to work with pymysql
+echo "Django core will be modified to work fine with pymysql"
+sed -i -e "s/MySQLdb/pymysql/g" $WORKON_HOME/$PROJECT_NAME/lib/python*/site-packages/django/db/backends/mysql/base.py
+sed -i -e "s/MySQLdb/pymysql/g" $WORKON_HOME/$PROJECT_NAME/lib/python*/site-packages/django/db/backends/mysql/introspection.py
+echo "Done."
+
 # Django project test and init
 if [ ! -f $PROJECTS_DIR/$PROJECT_NAME/manage.py ];
   then
@@ -96,6 +102,8 @@ if [ ! -f $PROJECTS_DIR/$PROJECT_NAME/manage.py ];
       echo "exiting requirements"
       echo "requirements installation ..."
       pip install -r $PROJECTS_DIR/$PROJECT_NAME/requirements.txt
+      echo "requirements updating ..."
+      pip freeze -r $PROJECTS_DIR/$PROJECT_NAME/requirements.txt > $PROJECTS_DIR/$PROJECT_NAME/requirements.txt
     fi
     echo 'Done.'
 fi
