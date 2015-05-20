@@ -41,7 +41,7 @@ debconf-set-selections <<< "mysql-server-5.5 mysql-server/root_password_again pa
 apt-get -y install mysql-server
 apt-get -y install mysql-client
 apt-get -y install libmysqlclient-dev
-echo "CREATE DATABASE IF NOT EXISTS $PROJECT_NAME;" | mysql --host=localhost --user=root --password=root
+echo "CREATE DATABASE IF NOT EXISTS $PROJECT_NAME;" | mysql --host=localhost --user=root --password=$MYSQL_PASSWORD
 echo 'Done.'
 
 # Python + virtualenv
@@ -73,7 +73,7 @@ mkvirtualenv --python=/usr/bin/python$PYTHON_VERSION $VIRTUALENV_NAME
 echo 'Virtualenv activating now'
 
 # Python dependencies
-pip install --allow-all-external mysql-connector-python
+pip install pymysql
 pip install setproctitle
 
 # Django installation
