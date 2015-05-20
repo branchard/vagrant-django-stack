@@ -15,17 +15,17 @@ conf_file = begin
 end
 
 # TODO more tests
-project_name = conf_file["project_name"] || "myproject"
+project_name = (conf_file["project_name"] || "myproject").to_s
 
-python_version = conf_file["python_version"] || "2.7"
+python_version = (conf_file["python_version"] || "2.7").to_s
 
-django_version = conf_file["django_version"] || "1.8"
+django_version = (conf_file["django_version"] || "1.8").to_s
 
-vm_architecture = conf_file["vm_architecture"] ||"32"
+vm_architecture = (conf_file["vm_architecture"] ||"32").to_s
 
-ip_address = conf_file["ip_address"] || "127.168.10.12"
+ip_address = (conf_file["ip_address"] || "127.168.10.12").to_s
 
-database_password = conf_file["database_password"] || "root"
+database_password = (conf_file["database_password"] || "root").to_s
 
 puts "Configuration: project_name: " + project_name + ", python_version: " + \
 python_version + ", django_version: " + django_version + \
