@@ -41,7 +41,7 @@ debconf-set-selections <<< "mysql-server-5.5 mysql-server/root_password_again pa
 apt-get -y install mysql-server
 apt-get -y install mysql-client
 apt-get -y install libmysqlclient-dev
-echo "CREATE DATABASE IF NOT EXISTS $PROJECT_NAME CHARACTER SET utf8;;" | mysql --host=localhost --user=root --password=$MYSQL_PASSWORD
+echo "CREATE DATABASE IF NOT EXISTS $PROJECT_NAME CHARACTER SET utf8;" | mysql --host=localhost --user=root --password=$MYSQL_PASSWORD
 echo 'Done.'
 
 # Python + virtualenv
