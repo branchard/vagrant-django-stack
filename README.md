@@ -1,4 +1,5 @@
 # Vagrant Django Stack
+If you are on Windows and you want to develop a Django app in a clean Python Linux environement.
 Vagrant Django stack is easy to install, simple and configurable.<br />
 Included:
 * Django 1.7.x to 1.8.x
